@@ -1,0 +1,32 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "imedia_view"
+version = "0.0.1"
+description = "IMEDIA View es una plataforma de an\u00e1lisis de sentimientos en redes sociales, que integra extracci\u00f3n de datos, procesamiento NLP y visualizaci\u00f3n interactiva de insights emocionales. Permite explorar patrones de opini\u00f3n en tiempo real a trav\u00e9s de un dashboard din\u00e1mico y una API de clasificaci\u00f3n."
+authors = [
+  { name = "Isabel_Valladolid, Esteban_Berumen, Mariana_Salome, Ivana_Camerota" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License"
+]
+requires-python = "~=3.10.0"
+
+
+[tool.ruff]
+line-length = 99
+src = ["imedia_view"]
+include = ["pyproject.toml", "imedia_view/**/*.py"]
+
+[tool.ruff.lint]
+extend-select = ["I"]  # Add import sorting
+
+[tool.ruff.lint.isort]
+known-first-party = ["imedia_view"]
+force-sort-within-sections = true
+

@@ -1,0 +1,35 @@
+name: IMEDIA_View
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - typer
+  - loguru
+  - tqdm
+  - ruff
+  - pip:
+    - python-dotenv
+    - mkdocs
+    - typer
+    - loguru
+    - tqdm
+    - ruff
+    - python-dotenv
+    - mkdocs
+    - requests
+    - beautifulsoup4
+    - selenium
+    - pandas
+    - numpy
+    - sqlalchemy
+    - psycopg2-binary
+    - prefect
+    - spacy
+    - nltk
+    - transformers
+    - fastapi
+    - uvicorn
+    - streamlit
+    - plotly
+    - -e .
