@@ -141,6 +141,27 @@ if __name__ == "__main__":
     x_extraction = X_extraction()  
     
     hashtag = "#hello"  
-    max_results = 10  
+    max_results = 100  
     x_extraction.search_tweets(hashtag, max_results)
+    
+    # Buscar tweets de un usuario específico
+    x_extraction.search_tweets_from_user("MarshallFaulk69", 10)
+
+    # Obtener detalles de un tweet específico
+    # x_extraction.get_tweet_details("tweet_id_here")
+    
+    # Obtener detalles de un usuario específico
+    x_extraction.get_user_details("MarshallFaulk69")
+    
+    # Obtener seguidores de un usuario
+    # x_extraction.get_user_followers("user_id_here", 5)
+    
+    # Obtener usuarios que sigue una cuenta
+    # x_extraction.get_user_following("user_id_here", 5)
+    
+    # Obtener menciones de un usuario
+    x_extraction.get_mentions("MarshallFaulk69", 10)
+    
+    # Obtener medios asociados a un tweet
+    # x_extraction.get_media_from_tweet("tweet_id_here")
 
