@@ -155,27 +155,37 @@ class Reddit_extraction:
             print(f"Error al obtener la información del subreddit: {e}")
             return {}  # Retornar un diccionario vacío si ocurre un error
  
+    def get_trending_subreddits(self, limit):
+        """Obtiene una lista de los subreddits más populares actualmente"""
+        trending_subreddits = []
+        for submission in self.reddit.subreddit('all').top(limit=limit):
+            trending_subreddits.append(submission.subreddit.display_name)
+        return trending_subreddits
+ 
 # Uso de la clase
 if __name__ == "__main__":
     reddit_extraction = Reddit_extraction()
     
-    # Obtener los 10 posts más populares de un subreddit
-    reddit_extraction.get_top_posts('python', limit=10)
-    print('---------------------------------------------------------------')
-    # Ejemplo de uso para buscar posts relacionados con "python" en Reddit
-    reddit_extraction.search_reddit('python', limit=10)
-    print('---------------------------------------------------------------')
-    # Ejemplo de uso para obtener los 5 posts más destacados de todos los tiempos de un subreddit
-    reddit_extraction.get_top_posts_all_time('python', limit=5)
-    print('---------------------------------------------------------------')
-    # Ejemplo de uso para obtener las suscripciones de un usuario
-    reddit_extraction.get_user_subscriptions('ManvilleJ')  # Reemplaza con el nombre de usuario real
-    print('---------------------------------------------------------------')
-    # Ejemplo de uso para obtener los 5 comentarios más recientes de un subreddit
-    reddit_extraction.get_recent_comments('python', limit=5)
-    print('---------------------------------------------------------------')
-    # Ejemplo de uso para obtener la información de un subreddit específico
-    reddit_extraction.get_subreddit_info('python')
-    print('---------------------------------------------------------------')
-    # Obtener los comentarios de un post específico (reemplaza 'post_id_here' por un ID real)
-    reddit_extraction.get_comments('hoolsm')
+    # # Obtener los 10 posts más populares de un subreddit
+    # reddit_extraction.get_top_posts('python', limit=10)
+    # print('---------------------------------------------------------------')
+    # # Ejemplo de uso para buscar posts relacionados con "python" en Reddit
+    # reddit_extraction.search_reddit('python', limit=10)
+    # print('---------------------------------------------------------------')
+    # # Ejemplo de uso para obtener los 5 posts más destacados de todos los tiempos de un subreddit
+    # reddit_extraction.get_top_posts_all_time('python', limit=5)
+    # print('---------------------------------------------------------------')
+    # # Ejemplo de uso para obtener las suscripciones de un usuario
+    # reddit_extraction.get_user_subscriptions('ManvilleJ')  # Reemplaza con el nombre de usuario real
+    # print('---------------------------------------------------------------')
+    # # Ejemplo de uso para obtener los 5 comentarios más recientes de un subreddit
+    # reddit_extraction.get_recent_comments('python', limit=5)
+    # print('---------------------------------------------------------------')
+    # # Ejemplo de uso para obtener la información de un subreddit específico
+    # reddit_extraction.get_subreddit_info('python')
+    # print('---------------------------------------------------------------')
+    # # Obtener los comentarios de un post específico (reemplaza 'post_id_here' por un ID real)
+    # reddit_extraction.get_comments('hoolsm')
+    
+    trending_subreddits = reddit_extraction.get_trending_subreddits(100)
+    print(f"Subreddits en tendencia: {trending_subreddits}")

@@ -1,15 +1,17 @@
 # pipeline.py
 
 from extrac_from_reddit.create_reddit_raw_data import CreateRawRedditData
+from extrac_from_reddit.Reddit_extract  import Reddit_extraction
 # Si tienes otras clases para extracción de datos de X (Twitter o Facebook), también las importamos
 # from data_extraction.extrac_from_x.some_other_extraction_class import SomeOtherExtractionClass
 
 def main():
+    reddit_extraction = Reddit_extraction()
+    trending_subreddits = reddit_extraction.get_trending_subreddits(100)
     # Subreddits a los que se desea acceder
-    subreddits = ['python', 'learnpython', 'programming']
     
     # Crear una instancia de la clase CreateRawRedditData
-    reddit_data = CreateRawRedditData(subreddits, post_limit=10000, comment_limit=10000)
+    reddit_data = CreateRawRedditData(trending_subreddits, post_limit=100, comment_limit=10000)
     
     # Recopilar los datos de Reddit
     print("Recopilando datos de Reddit...")
