@@ -15,7 +15,13 @@ class CreateRawRedditData(Reddit_extraction):
     def fetch_data(self):
         """Obtiene todos los datos relevantes de los subreddits."""
         for subreddit in self.subreddits:
-            print(f"Fetching data for subreddit: {subreddit}")
+            print(f"""
+                  /--------------------------------------------------------------\\
+                  
+                  Fetching data for subreddit: {subreddit}
+                  
+                  /--------------------------------------------------------------\\
+                  """)
             subreddit_data = {}
 
             # Obtén los posts más recientes (últimos 24 horas por defecto)
