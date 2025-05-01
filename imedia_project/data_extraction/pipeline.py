@@ -5,11 +5,11 @@ from extrac_from_reddit.Reddit_extract  import Reddit_extraction
 
 def main():
     reddit_extraction = Reddit_extraction()
-    trending_subreddits = reddit_extraction.get_trending_subreddits(100)
     # Subreddits a los que se desea acceder
+    trending_subreddits = reddit_extraction.get_trending_subreddits(100)
     
     # Crear una instancia de la clase CreateRawRedditData
-    reddit_data = CreateRawRedditData(trending_subreddits, post_limit=100, comment_limit=1000)
+    reddit_data = CreateRawRedditData(trending_subreddits, post_limit=100, comment_limit=100)
     
     # Recopilar los datos de Reddit
     print("Recopilando datos de Reddit...")
