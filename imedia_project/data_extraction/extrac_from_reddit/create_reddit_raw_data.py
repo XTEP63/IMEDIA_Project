@@ -16,11 +16,11 @@ class CreateRawRedditData(Reddit_extraction):
         """Obtiene todos los datos relevantes de los subreddits."""
         for subreddit in self.subreddits:
             print(f"""
-                  /--------------------------------------------------------------\\
-                  
-                  Fetching data for subreddit: {subreddit}
-                  
-                  /--------------------------------------------------------------\\
+                        /--------------------------------------------------------------\\
+ /~~/-------------------                      
+=                       Fetching data for subreddit: {subreddit}
+ \~~\-------------------                     
+                        /--------------------------------------------------------------\\
                   """)
             subreddit_data = {}
 
