@@ -6,8 +6,10 @@ from extrac_from_reddit.Reddit_extract  import Reddit_extraction
 def main():
     reddit_extraction = Reddit_extraction()
     # Subreddits a los que se desea acceder
-    trending_subreddits = reddit_extraction.get_trending_subreddits(100)
+    trending_subreddits = reddit_extraction.get_trending_subreddits(1000*4)
+    trending_subreddits = set(trending_subreddits)
     
+    print(f'-------------------------Tenemos {len(trending_subreddits)} subreddits que son {trending_subreddits}-------------------------')
     # Crear una instancia de la clase CreateRawRedditData
     reddit_data = CreateRawRedditData(trending_subreddits, post_limit=100, comment_limit=100)
     
