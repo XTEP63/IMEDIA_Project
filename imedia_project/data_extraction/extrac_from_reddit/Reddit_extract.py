@@ -163,8 +163,8 @@ class Reddit_extraction:
         return trending_subreddits
  
 # Uso de la clase
-if __name__ == "__main__":
-    reddit_extraction = Reddit_extraction()
+# if __name__ == "__main__":
+#     reddit_extraction = Reddit_extraction()
     
     # # Obtener los 10 posts más populares de un subreddit
     # reddit_extraction.get_top_posts('python', limit=10)
@@ -187,7 +187,7 @@ if __name__ == "__main__":
     # # Obtener los comentarios de un post específico (reemplaza 'post_id_here' por un ID real)
     # reddit_extraction.get_comments('hoolsm')
     
-    trending_subreddits = reddit_extraction.get_trending_subreddits(1000*4)
-    trending_subreddits = set(trending_subreddits)
-    print(len(trending_subreddits))
-    print(f"Subreddits en tendencia: {trending_subreddits}")
+    # trending_subreddits = reddit_extraction.get_trending_subreddits(1000*4)
+    # trending_subreddits = set(trending_subreddits)
+    # print(len(trending_subreddits))
+    # print(f"Subreddits en tendencia: {trending_subreddits}")

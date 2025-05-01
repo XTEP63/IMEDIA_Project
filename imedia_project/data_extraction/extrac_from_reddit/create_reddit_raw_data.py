@@ -14,11 +14,13 @@ class CreateRawRedditData(Reddit_extraction):
 
     def fetch_data(self):
         """Obtiene todos los datos relevantes de los subreddits."""
+        counter = 0
         for subreddit in self.subreddits:
+            counter += 1
             print(f"""
                         /--------------------------------------------------------------\\
  /~~/-------------------                      
-=                       Fetching data for subreddit: {subreddit}
+=            Fetching data for subreddit: {subreddit} subreddit {counter} of {len(self.subreddits)}
  \~~\-------------------                     
                         /--------------------------------------------------------------\\
                   """)
@@ -26,34 +28,34 @@ class CreateRawRedditData(Reddit_extraction):
 
             # Obtén los posts más recientes (últimos 24 horas por defecto)
             subreddit_data["ultimos_posts"] = self.get_top_posts(subreddit, limit=self.post_limit)
-            print(f"Últimos posts: {subreddit_data['ultimos_posts']}")
-            print('-------------------------------------------------------------------')
+            # print(f"Últimos posts: {subreddit_data['ultimos_posts']}")
+            # print('-------------------------------------------------------------------')
             
             # Obtén los posts más populares de todos los tiempos
             subreddit_data["top_posts"] = self.get_top_posts_all_time(subreddit, limit=self.post_limit)
-            print(f"Top posts: {subreddit_data['top_posts']}")
-            print('-------------------------------------------------------------------')
+            # print(f"Top posts: {subreddit_data['top_posts']}")
+            # print('-------------------------------------------------------------------')
             
             # Buscar posts relacionados (usando un término de búsqueda)
             subreddit_data["posts_relacionados"] = self.search_reddit(subreddit, limit=self.post_limit)
-            print(f"Posts relacionados: {subreddit_data['posts_relacionados']}")
-            print('-------------------------------------------------------------------')
+            # print(f"Posts relacionados: {subreddit_data['posts_relacionados']}")
+            # print('-------------------------------------------------------------------')
             
             # Obtener comentarios más recientes usando el método correcto
             subreddit_data["comentarios_mas_recientes"] = self.get_recent_comments(subreddit, limit=self.comment_limit)
-            print(f"Comentarios más recientes: {subreddit_data['comentarios_mas_recientes']}")
-            print('-------------------------------------------------------------------')
+            # print(f"Comentarios más recientes: {subreddit_data['comentarios_mas_recientes']}")
+            # print('-------------------------------------------------------------------')
 
             # Obtener información del subreddit
             subreddit_data["subreddit_info"] = self.get_subreddit_info(subreddit)
-            print(f"Información del subreddit: {subreddit_data['subreddit_info']}")
-            print('-------------------------------------------------------------------')
+            # print(f"Información del subreddit: {subreddit_data['subreddit_info']}")
+            # print('-------------------------------------------------------------------')
 
             # Para cada comentario, obtener las suscripciones del autor
             for comment in subreddit_data.get("comentarios_mas_recientes", []):
                 author = comment.get("author")
                 if author:
-                    print(f"Obteniendo suscripciones para el autor: {author}")
+                    # print(f"Obteniendo suscripciones para el autor: {author}")
                     user_subscriptions = self.get_user_subscriptions(author)  # Obtener subreddits donde el autor ha publicado
                     comment['user_subscriptions'] = user_subscriptions  # Guardar suscripciones del autor en el comentario
 
@@ -78,17 +80,3 @@ class CreateRawRedditData(Reddit_extraction):
         with open(file_name, 'w') as f:
             json.dump(self.data, f, indent=4)
         print(f"Data saved to {file_name}")
-
-# Aquí empieza el bloque para ejecutar la prueba
-if __name__ == "__main__":
-    # Lista de subreddits para probar
-    subreddits = ['programming']
-
-    # Crear una instancia de la clase CreateRawRedditData
-    reddit_data = CreateRawRedditData(subreddits, post_limit=5)
-
-    # Recopilar los datos
-    reddit_data.fetch_data()
-
-    # Guardar los datos en un archivo JSON
-    reddit_data.save_to_json("raw_reddit_data.json")
