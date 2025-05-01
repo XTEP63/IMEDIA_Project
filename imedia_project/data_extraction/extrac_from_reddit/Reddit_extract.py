@@ -68,7 +68,7 @@ class Reddit_extraction:
         """Obtener los comentarios de un post específico"""
         
         if not post_id:
-            print("Post ID no válido.")
+            # print("Post ID no válido.")
             return []
 
         try:
@@ -130,8 +130,8 @@ class Reddit_extraction:
             # print(f"Últimos {limit} comentarios de r/{subreddit}:")
             for comment in comments:
                 comments_list.append({'author': comment.author.name, 'body': comment.body})
-                print(f"Author: {comment.author}")
-                print(f"Comment: {comment.body}\n")
+                # print(f"Author: {comment.author}")
+                # print(f"Comment: {comment.body}\n")
             return comments_list  # Devolver los comentarios como lista
         except Exception as e:
             # print(f"Error al obtener los comentarios recientes: {e}")
