@@ -33,13 +33,13 @@ class Reddit_extraction:
                     'score': post.score,
                     'url': post.url
                 })
-                print(f"Title: {post.title}")
-                print(f"Score: {post.score}")
-                print(f"URL: {post.url}\n")
+                # print(f"Title: {post.title}")
+                # print(f"Score: {post.score}")
+                # print(f"URL: {post.url}\n")
 
             return top_posts_list  # Devolvemos la lista de posts
         except Exception as e:
-            print(f"Error al obtener los posts recientes: {e}")
+            # print(f"Error al obtener los posts recientes: {e}")
             return []  # Retornamos una lista vacía en caso de error
  
     def get_top_posts_all_time(self, subreddit, limit=10):
@@ -55,13 +55,13 @@ class Reddit_extraction:
                     'score': post.score,
                     'url': post.url
                 })
-                print(f"Title: {post.title}")
-                print(f"Score: {post.score}")
-                print(f"URL: {post.url}\n")
+                # print(f"Title: {post.title}")
+                # print(f"Score: {post.score}")
+                # print(f"URL: {post.url}\n")
 
             return top_posts_list  # Devolvemos la lista de posts
         except Exception as e:
-            print(f"Error al obtener los posts top: {e}")
+            # print(f"Error al obtener los posts top: {e}")
             return []  # Retornamos una lista vacía en caso de error
  
     def get_comments(self, post_id):
@@ -78,12 +78,12 @@ class Reddit_extraction:
 
             # Verificar si el post tiene comentarios antes de iterar
             if not post.comments:
-                print(f"No hay comentarios en el post {post_id}.")
+                # print(f"No hay comentarios en el post {post_id}.")
                 return []
             
             return [{'author': comment.author.name, 'body': comment.body} for comment in post.comments.list()]
         except Exception as e:
-            print(f"Error al obtener los comentarios: {e}")
+            # print(f"Error al obtener los comentarios: {e}")
             return []
  
     def search_reddit(self, query, limit=10):
@@ -96,30 +96,30 @@ class Reddit_extraction:
             if results:
                 return [{'title': post.title, 'score': post.score, 'url': post.url} for post in results]
             else:
-                print(f"No se encontraron posts relacionados con '{query}'.")
+                # print(f"No se encontraron posts relacionados con '{query}'.")
                 return []
         except Exception as e:
-            print(f"Error al buscar en Reddit: {e}")
+            # print(f"Error al buscar en Reddit: {e}")
             return []
  
     def get_user_subscriptions(self, username, limit=10):
         """Obtener los subreddits a los que un usuario ha publicado en los últimos 'limit' posts"""
         try:
             user = self.reddit.redditor(username)
-            print(f"Obteniendo los subreddits a los que {username} ha publicado en sus últimos {limit} posts:")
+            # print(f"Obteniendo los subreddits a los que {username} ha publicado en sus últimos {limit} posts:")
 
             # Obtener las publicaciones recientes del usuario
             user_subreddits = set()  # Usamos un set para evitar duplicados
             for submission in user.submissions.new(limit=limit):
                 subreddit_name = submission.subreddit.display_name
                 user_subreddits.add(subreddit_name)  # Agregar el subreddit al set
-                print(f"Subreddit: {subreddit_name}")
+                # print(f"Subreddit: {subreddit_name}")
 
             # Convertir el set a lista antes de devolverlo
             return list(user_subreddits)
 
         except Exception as e:
-            print(f"Error al obtener las suscripciones del usuario: {e}")
+            # print(f"Error al obtener las suscripciones del usuario: {e}")
             return []
  
     def get_recent_comments(self, subreddit, limit=10):
@@ -127,14 +127,14 @@ class Reddit_extraction:
         try:
             comments = self.reddit.subreddit(subreddit).comments(limit=limit)
             comments_list = []
-            print(f"Últimos {limit} comentarios de r/{subreddit}:")
+            # print(f"Últimos {limit} comentarios de r/{subreddit}:")
             for comment in comments:
                 comments_list.append({'author': comment.author.name, 'body': comment.body})
                 print(f"Author: {comment.author}")
                 print(f"Comment: {comment.body}\n")
             return comments_list  # Devolver los comentarios como lista
         except Exception as e:
-            print(f"Error al obtener los comentarios recientes: {e}")
+            # print(f"Error al obtener los comentarios recientes: {e}")
             return []  # Retornar una lista vacía si ocurre un error
  
     def get_subreddit_info(self, subreddit):
@@ -146,13 +146,13 @@ class Reddit_extraction:
                 'subscribers': sub.subscribers,
                 'description': sub.public_description
             }
-            print(f"Información de r/{subreddit}:")
-            print(f"Name: {subreddit_info['name']}")
-            print(f"Subscribers: {subreddit_info['subscribers']}")
-            print(f"Description: {subreddit_info['description']}")
+            # print(f"Información de r/{subreddit}:")
+            # print(f"Name: {subreddit_info['name']}")
+            # print(f"Subscribers: {subreddit_info['subscribers']}")
+            # print(f"Description: {subreddit_info['description']}")
             return subreddit_info  # Devolver los detalles del subreddit como un diccionario
         except Exception as e:
-            print(f"Error al obtener la información del subreddit: {e}")
+            # print(f"Error al obtener la información del subreddit: {e}")
             return {}  # Retornar un diccionario vacío si ocurre un error
  
     def get_trending_subreddits(self, limit):
