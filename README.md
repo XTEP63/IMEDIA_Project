@@ -1,8 +1,3 @@
-
----
-output: github_document
----
-
 # IMEDIA Proyect
 
 ## Descripción General
