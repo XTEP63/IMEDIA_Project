@@ -1,10 +1,9 @@
 
 ---
-title: "Reddit Analysis Pipeline"
 output: github_document
 ---
 
-# Reddit Analysis Pipeline
+# IMEDIA Proyect
 
 ## Descripción General
 
