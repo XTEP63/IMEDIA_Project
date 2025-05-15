@@ -2,7 +2,10 @@
 /IMEDIA_env/
 
 # Data
-/data/
+data/**/*.csv
+data/**/*.json
+
+!data/**/.gitkeep
 
 # Mac OS-specific storage files
 .DS_Store
