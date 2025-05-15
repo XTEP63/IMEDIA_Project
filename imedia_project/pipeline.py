@@ -28,7 +28,7 @@ class RedditPipeline:
     def preprocess_data(self):
         """Fase de preprocesamiento de datos"""
         processor = RedditPreProcessing(self.base_path)
-        processor.process_all()
+        processor.process()
 
     def clean_data(self):
         """Fase de limpieza de datos"""
@@ -43,6 +43,6 @@ class RedditPipeline:
 
 # Ejecutar el pipeline
 if __name__ == "__main__":
-    base_path = 'ruta/a/tu/proyecto'  # Cambia esto por la ruta real
+    base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     pipeline = RedditPipeline(base_path)
     pipeline.run()

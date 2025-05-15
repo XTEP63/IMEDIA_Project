@@ -60,6 +60,7 @@ class DataProcessor:
         posts.to_csv(save_path, index=False)
         print(f"Posts procesados ({output_name}) guardados en: {save_path}")
         return posts
+    
     def process_all(self):
         """Ejecuta todo el pipeline de procesamiento."""
         self.process_comments()
