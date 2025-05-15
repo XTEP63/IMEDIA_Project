@@ -17,7 +17,12 @@ class RedditPipeline:
         reddit_extraction = Reddit_extraction()
         trending_subreddits = reddit_extraction.get_trending_subreddits(1000*4)
         trending_subreddits = set(trending_subreddits)
-        print(f'-------------------------Tenemos {len(trending_subreddits)} subreddits que son {trending_subreddits}-------------------------')
+        print(f'''
+------------------------------------------------------------------------------------------------------------
+                Tenemos: {len(trending_subreddits)} subreddits que son:
+{trending_subreddits}
+------------------------------------------------------------------------------------------------------------
+                ''')
 
         reddit_data = CreateRawRedditData(trending_subreddits, post_limit=self.post_limit, comment_limit=self.comment_limit)
         print("Recopilando datos de Reddit...")
