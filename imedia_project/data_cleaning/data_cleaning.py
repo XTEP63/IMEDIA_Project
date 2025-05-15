@@ -2,20 +2,17 @@ import pandas as pd
 import ast
 import os
 from transformers import AutoTokenizer
-
 class DataProcessor:
     def __init__(self, base_path):
         self.base_path = base_path
         self.tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
         self.processed_path = os.path.join(base_path, 'data', 'processed')
         os.makedirs(self.processed_path, exist_ok=True)
-
     def safe_tokenize(self, text):
         """Tokeniza texto de manera segura, manejando casos no strings."""
         if isinstance(text, str):
             return self.tokenizer.encode(text, add_special_tokens=True)
         return []
-
     def process_comments(self):
         """Procesa los datos de comentarios."""
         path = os.path.join(self.base_path, 'data', 'interim', 'comments_data.csv')
@@ -42,7 +39,6 @@ class DataProcessor:
         comments.to_csv(save_path, index=False)
         print(f"Comentarios procesados guardados en: {save_path}")
         return comments
-
     def process_posts(self, file_name, output_name):
         """Procesa datos de posts (genérico para diferentes tipos de posts)."""
         path = os.path.join(self.base_path, 'data', 'interim', file_name)
@@ -64,7 +60,6 @@ class DataProcessor:
         posts.to_csv(save_path, index=False)
         print(f"Posts procesados ({output_name}) guardados en: {save_path}")
         return posts
-
     def process_all(self):
         """Ejecuta todo el pipeline de procesamiento."""
         self.process_comments()
@@ -72,9 +67,9 @@ class DataProcessor:
         self.process_posts('subreddit_info_data.csv', 'subreddit_info_processed.csv')
         self.process_posts('top_posts_data.csv', 'top_posts_processed.csv')
         self.process_posts('ultimos_posts_data.csv', 'ultimos_posts_processed.csv')
-
 # Uso
 if __name__ == "__main__":
-    base_path = '/Users/isavalladolid/Documents/Documentos - MacBook Air de Isabel/IMEDIA_Project'
-    processor = DataProcessor(base_path)
-    processor.process_all()
+    base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    #processor = DataProcessor(base_path)
+    #processor.process_all()
+    print(base_path)
