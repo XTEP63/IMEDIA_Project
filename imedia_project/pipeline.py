@@ -1,8 +1,8 @@
-# from pipeline import Pipeline
 from data_extraction.extrac_from_reddit.create_reddit_raw_data import CreateRawRedditData
 from data_extraction.extrac_from_reddit.Reddit_extract import Reddit_extraction
 from data_procesing.Reddit_pre_procesing import RedditPreProcessing
 from data_cleaning.data_cleaning import DataProcessor
+from modeling.model import SentimentAnalyzer
 import os
 
 class RedditPipeline:
@@ -34,12 +34,18 @@ class RedditPipeline:
         """Fase de limpieza de datos"""
         processor = DataProcessor(self.base_path)
         processor.process_all()
+        
+    def analyze_data(self):
+        """Fase de Analisis de Sentimientos"""
+        sa = SentimentAnalyzer()
+        sa.analize_all()
 
     def run(self):
         """Ejecuta el pipeline completo"""
         self.extract_data()
         self.preprocess_data()
         self.clean_data()
+        self.analyze_data()
 
 # Ejecutar el pipeline
 if __name__ == "__main__":
