@@ -16,6 +16,7 @@ class RedditPipeline:
         """Fase de extracción de datos"""
         reddit_extraction = Reddit_extraction()
         trending_subreddits = reddit_extraction.get_trending_subreddits(1000*4)
+        # trending_subreddits = ['Minecraft', 'TeenagersButBetter']
         trending_subreddits = set(trending_subreddits)
         print(f'''
 ------------------------------------------------------------------------------------------------------------
