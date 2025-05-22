@@ -32,7 +32,7 @@ La arquitectura del pipeline está diseñada de manera modular, facilitando su m
 
 -A futuro, incorporar LLMs (Large Language Models) que permitan a los usuarios realizar preguntas sobre temas de interés o generar contenido de manera asistida.
 
-Estado Actual
+## Estado Actual
 El proyecto se encuentra en desarrollo. Hasta el momento, se ha implementado exitosamente la parte de recolección y análisis básico de sentimientos desde Reddit. Próximas versiones incluirán:
 
 -Análisis semántico profundo y detección de tópicos emergentes.
